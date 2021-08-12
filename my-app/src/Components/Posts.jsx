@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { getPerson, fetchFail } from './../Action/action';
+import { getQuote, fetchFail } from './../Action/action';
 import { connect } from 'react-redux';
 
 
@@ -7,7 +7,7 @@ const RandomQuotes = (props) => {
    const { quote, isFetching, error } = props
 
    useEffect((props) => {
-       props.getPerson()
+       props.getQuote()
    }, [])
 
     if (error) {
@@ -20,7 +20,7 @@ const RandomQuotes = (props) => {
 
 
     const handleClick = () => {
-        props.getPerson()
+        props.getQuote()
     }
 
     return (
@@ -42,4 +42,4 @@ const RandomQuotes = (props) => {
 }
 
         
-export default connect(mapStateToProps, { getPerson, fetchFail })(RandomQuotes);
+export default connect(mapStateToProps, { getQuote, fetchFail })(RandomQuotes);

@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export const getPerson = () => {
+export const getQuote = () => {
 	return (dispatch) => {
 		dispatch(fetchStart());
 		axios
@@ -30,4 +30,4 @@ export const fetchFail = (error) => {
 };
 
 
-export default getPerson
+export default getQuote
