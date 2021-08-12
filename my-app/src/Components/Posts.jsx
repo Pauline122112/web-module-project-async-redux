@@ -1,21 +1,45 @@
 import React, { useEffect } from 'react';
 import { getPerson, fetchFail } from './../Action/action';
 import { connect } from 'react-redux';
-import axios from 'axios';
 
-const RandomQuotes = () => {
-   
+
+const RandomQuotes = (props) => {
+   const { quote, isFetching, error } = props
+
+   useEffect((props) => {
+       props.getPerson()
+   }, [])
+
+    if (error) {
+    return <h2>We got an error: {error}</h2>;
+  }
+
+  if (isFetching) {
+    return <h2>Fetching quote for you!</h2>;
+  }
+
+
+    const handleClick = () => {
+        props.getPerson()
+    }
 
     return (
         <div>
         <div className='quote'>
-            <h2>New Quote</h2>
+            <h2>New Quote: {quote.value}</h2>
          </div>
-        <button>Generate New Quote</button>
+        <button onclick={handleClick}>Generate New Quote</button>
         </div>
     )
-
-        
 }
 
-export default RandomQuotes
+ const mapStateToProps = state => {
+  return {
+    quote: state.quote,
+    isFetching: state.isFetching,
+    error: state.error
+  };
+}
+
+        
+export default connect(mapStateToProps, { getPerson, fetchFail })(RandomQuotes);

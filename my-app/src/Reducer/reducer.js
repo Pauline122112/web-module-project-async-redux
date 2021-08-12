@@ -34,7 +34,8 @@ export const postReducer = (state = initiateState, action) => {
 				error: action.payload,
 				isFetching: false,
 			};
-
+		default:
+			return state;
 	}
 };
 
