@@ -28,7 +28,7 @@ const RandomQuotes = (props) => {
         <div className='quote'>
             <h2>New Quote: {quote.value}</h2>
          </div>
-        <button onclick={handleClick}>Generate New Quote</button>
+        <button onClick={handleClick}>Generate New Quote</button>
         </div>
     )
 }
